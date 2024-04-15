@@ -1,0 +1,30 @@
+.container__home {
+  display: flex;
+  height: 100vh;
+}
+.img__1 {
+  margin-left: 0.3rem;
+}
+.sidebar {
+  width: 150px;
+  background-color: #0091ff;
+  color: white;
+  padding: 1rem;
+}
+.sidebar ul {
+  gap: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  background-color: #0091ff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  width: calc(100% - 100px);
+}

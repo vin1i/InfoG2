@@ -1,5 +1,5 @@
 import "./login.css";
-import backgroundImage from "../../assets/image 5.png";
+import backgroundImage from "../../assets/imagens/image 5.png";
 import { useState } from "react";
 
 function Login() {
