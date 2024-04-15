@@ -213,7 +213,7 @@
   color: #0077ff;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1124px) {
   .img {
     display: none;
   }

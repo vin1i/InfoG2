@@ -6,6 +6,8 @@ import Login from "../Login/Login";
 const AppRoutes = () => {
   return (
     <Routes>
+      {" "}
+      <Route path="/" element={<Login />}></Route>
       <Route path="/Login" element={<Login />}></Route>
       <Route path="/Home" element={<Home />}></Route>
       <Route path="/Usuarios" element={<Users />}></Route>
