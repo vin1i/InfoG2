@@ -16,11 +16,15 @@ const Card = () => {
         <img src={icon1} alt="" />
         <h1>Configuração</h1>
       </div>
-      <div className="card">
-        {" "}
-        <img src={icon2} alt="" />
-        <h1>Usuários</h1>
-      </div>
+
+      <a className="card" href="usuarios">
+        <div className="">
+          {" "}
+          <img src={icon2} alt="" />
+          <h1>Usuários</h1>
+        </div>
+      </a>
+
       <div className="card">
         {" "}
         <img src={icon3} alt="" />
