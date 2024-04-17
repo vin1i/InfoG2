@@ -9,6 +9,7 @@ import Vector6 from "../../assets/icones/ic_outline-settings.png";
 import Logo from "../../assets/imagens/Ellipse 18(1).png";
 import ghost from "../../assets/iconesHome/Group 783.png";
 import "./Users.css";
+import "../Home/home.css";
 import "../Formulário/Cadastro/Cadastro.css";
 
 import BasicInfo from "../Formulário/BasicData/Data";
@@ -57,13 +58,16 @@ const Users = () => {
         <nav>
           <ul>
             <li>
-              <a href="">
+              <a href="home">
                 <img className="img__1" src={toggle} alt="" />
               </a>
             </li>
 
             <li>
-              <img className="img__2" src={Vector} alt="" />
+              <a href="home">
+                {" "}
+                <img className="img__2" src={Vector} alt="" />
+              </a>
             </li>
             <li>
               <a href="">
@@ -135,7 +139,6 @@ const Users = () => {
           </form>
         </div>
       </div>
-      {/* Adicione o conteúdo principal aqui */}
     </section>
   );
 };

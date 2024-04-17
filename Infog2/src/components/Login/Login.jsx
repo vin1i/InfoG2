@@ -1,10 +1,30 @@
 import "./login.css";
 import backgroundImage from "../../assets/imagens/image 5.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/Auth/AuthContext";
 
 function Login() {
+  const auth = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (email && password) {
+      const isLogged = await auth.signin(email, password);
+      console.log(isLogged);
+      if (isLogged) {
+        navigate("/home");
+      } else {
+        alert("Não está logado");
+      }
+    }
+  };
+
   return (
     <section className="section__container">
       <div className="container">
@@ -39,9 +59,9 @@ function Login() {
               </div>
 
               <div className="container-login-form-btn">
-                <a href="home" className="login-form-btn">
+                <button onClick={HandleSubmit} className="login-form-btn">
                   Entrar
-                </a>
+                </button>
               </div>
 
               <div className="text-center">

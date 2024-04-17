@@ -45,8 +45,14 @@
   justify-content: center;
   align-items: center;
 }
+.img__2,
 .img__3 {
   transition: transform 0.3s;
+}
+.img__2:hover {
+  transform: scale(1.1);
+
+  border-radius: 50px;
 }
 .img__3:hover {
   transform: scale(1.1);

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"; // Importe os componentes do r
 import Home from "../Home/Home";
 import Users from "../Users/Users";
 import Login from "../Login/Login";
+import { RequireAuth } from "../context/Auth/RequireAuth";
 
 const AppRoutes = () => {
   return (
@@ -9,7 +10,15 @@ const AppRoutes = () => {
       {" "}
       <Route path="/" element={<Login />}></Route>
       <Route path="/Login" element={<Login />}></Route>
-      <Route path="/Home" element={<Home />}></Route>
+      <Route path="/Usuarios" element={<Users />}></Route>{" "}
+      <Route
+        path="/Home"
+        element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        }
+      ></Route>
       <Route path="/Usuarios" element={<Users />}></Route>
     </Routes>
   );
