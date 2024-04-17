@@ -1,134 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-/* body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  gap: 16px;
-} */
-
-.container__home {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-}
-.img__1,
-.img__2 {
-  margin-left: 0.3rem;
-}
-
-.image__logo {
-  width: max-content;
-  margin-top: 25.5rem;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  align-self: flex-end;
-}
-.sidebar {
-  width: 80px;
-  background-color: #0091ff;
-  color: white;
-  padding: 1rem;
-  height: 100vh;
-}
-.sidebar ul {
-  z-index: 99999;
-  gap: 2rem;
-  cursor: pointer;
-
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-.img__3 {
-  transition: transform 0.3s;
-}
-.img__3:hover {
-  transform: scale(1.1);
-
-  border-radius: 50px;
-}
-
-.header {
-  background-color: #007ad6;
-  color: white;
-  display: flex;
-
-  justify-content: space-between;
-  padding: 1rem;
-  width: calc(100% - 50px);
-}
-.card__content {
-  margin-top: 20rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-
-  /* flex-wrap: wrap;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100% - 80px); */
-}
-.card h1 {
-  font-size: 1rem;
-}
-.card {
-  cursor: pointer;
-  flex: 1 1 200px;
-  background-color: #0091ff;
-  color: white;
-
-  margin: 20px;
-  text-align: center;
-  border-radius: 5px;
-  /* width: 200px;
-  height: 150px;
-  background-color: #0077ff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 10px;
-  padding: 10px; */
-  transition: transform 0.3s;
-}
-.card:hover {
-  transform: scale(1.05);
-}
-
-@media screen and (max-width: 900px) {
-  .image__logo {
-    margin-top: 7rem;
-  }
-  .card {
-    width: 5px; /* Altere o tamanho do card para 100px */
-    height: 40px; /* Altere a altura do card para 100px */
-    margin: 6px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .card img {
-    width: 20px;
-  }
-  .card h1 {
-    display: none; /* Reduza o tamanho da fonte do título */
-  }
-
-  .card__content {
-    margin-top: 4rem; /* Reduza a margem superior */
-    height: 0; /* Ajuste a altura do container de cards */
-  }
-}
-
 .cadastro__container {
   grid-template-columns: repeat(1, 400px);
   justify-content: center;
@@ -194,11 +63,13 @@
   padding: 0 1rem;
   opacity: 0;
   visibility: hidden;
+  overflow-y: auto;
   transition: 0.3s;
 }
 
 .cadastro__modal-content {
-  width: 500px;
+  width: 600px;
+  margin-top: auto;
   position: relative;
   background-color: var(--container-color);
   padding: 4.5rem 2.5rem 2.5rem;

@@ -10,6 +10,30 @@
   z-index: 999; /* Certifique-se de que a camada de conteúdo seja superior à camada da imagem */
 }
 
+.btn__form {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.btn__form:hover {
+  opacity: 0.8;
+}
+
+.btn__form.cancel {
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo acinzentado meio opaco */
+  color: #333; /* Cor do texto */
+}
+
+.btn__form.save {
+  background-color: #007bff; /* Azul */
+  color: #fff; /* Cor do texto */
+}
+
 .button__add {
   background-color: #007ad6;
   color: white;

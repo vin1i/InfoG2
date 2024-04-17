@@ -6,54 +6,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
-    // <div className="container">
-    //   <div className="form-image">
-    //     <img src={backgroundImage} alt="" />
-    //   </div>
-    //   <div className="form">
-    //     <form action="#">
-    //       <div className="form-header">
-    //         <div className="title">
-    //           <h1>Login</h1>
-    //         </div>
-    //         <div className="login-button">
-    //           <button>
-    //             <a href="#">Entrar</a>
-    //           </button>
-    //         </div>
-    //       </div>{" "}
-    //       <div className="input-group">
-    //         <div className="input-box">
-    //           <label htmlFor="email">Email</label>
-    //           <input
-    //             id="email"
-    //             type="email"
-    //             name="email"
-    //             placeholder="Digite seu Email"
-    //             required
-    //           />
-    //         </div>
-    //       </div>
-    //       <div className="input-group">
-    //         <div className="input-box">
-    //           <label htmlFor="firstname">Senha</label>
-    //           <input
-    //             id="firstname"
-    //             type="text"
-    //             name="firstname"
-    //             placeholder="Digite sua senha"
-    //             required
-    //           />
-    //         </div>
-    //       </div>
-    //       <div className="continue-button">
-    //         <button>
-    //           <a href="#">Entrar</a>
-    //         </button>
-    //       </div>
-    //     </form>
-    //   </div>
-    //</div>
     <section className="section__container">
       <div className="container">
         <div className="container-login">
@@ -94,7 +46,7 @@ function Login() {
 
               <div className="text-center">
                 <span className="posse__conta"></span>
-                <a href="register" className="forgot__password">
+                <a href="" className="forgot__password">
                   Esqueceu sua senha?
                 </a>
               </div>
