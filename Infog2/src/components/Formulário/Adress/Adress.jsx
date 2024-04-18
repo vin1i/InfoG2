@@ -1,12 +1,13 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
+import "./Adress.css";
+import { ufOptions } from "./Data";
 function Address({ onChange }) {
   const [addressInfo, setAddressInfo] = useState({
     cep: "",
     logradouro: "",
     numero: "",
-    estado: "",
+    // estado: "",
     cidade: "",
     bairro: "",
     referencia: "",
@@ -57,17 +58,27 @@ function Address({ onChange }) {
           required
         />
       </div>
+      {/* ---------------SELEÇÃO DOS ESTADOS------------------ */}
       <div className="form-group">
         <label htmlFor="estado">Estado:</label>
-        <input
-          type="text"
+        <select
           id="estado"
           name="estado"
           onChange={handleChange}
-          className="input-field"
+          className="select-field"
           required
-        />
+          defaultValue=""
+        >
+          <option value="">Selecione...</option>
+
+          {ufOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       </div>
+      {/* ---------------SELEÇÃO DOS ESTADOS------------------ */}
       <div className="form-group">
         <label htmlFor="cidade">Cidade:</label>
         <input

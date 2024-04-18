@@ -13,17 +13,35 @@ function Login() {
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
-
     if (email && password) {
-      const isLogged = await auth.signin(email, password);
-      console.log(isLogged);
-      if (isLogged) {
-        navigate("/home");
-      } else {
-        alert("Não está logado");
+      try {
+        const response = await auth.signin(email, password);
+        console.log("Response from API:", response);
+
+        if (response) {
+          navigate("/home");
+        } else {
+          alert("Credenciais inválidas. Por favor, tente novamente.");
+        }
+      } catch (error) {
+        console.error("Error during signin:", error);
+        alert("Credenciais inválidas. Por favor, tente novamente.");
       }
+    } else {
+      alert("Por favor, preencha todos os campos.");
     }
   };
+
+  //   if (email && password) {
+  //     const isLogged = await auth.signin(email, password);
+  //     console.log(isLogged);
+  //     if (isLogged) {
+  //       navigate("/home");
+  //     } else {
+  //       alert("Não está logado");
+  //     }
+  //   }
+  // };
 
   return (
     <section className="section__container">

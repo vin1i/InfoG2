@@ -9,11 +9,16 @@ export const AuthProvider = ({ children }) => {
 
   const api = useApi();
 
+  const setToken = (token) => {
+    localStorage.setItem("authToken", token);
+  };
+
   const signin = async (email, password) => {
     const data = await api.signin(email, password);
 
     if (data.nome && data.token) {
       setUser(data.nome);
+      setToken(data.token);
       return true;
     }
 

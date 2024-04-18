@@ -11,33 +11,32 @@ import ghost from "../../assets/iconesHome/Group 783.png";
 import "./Users.css";
 import "../Home/home.css";
 import "../Formulário/Cadastro/Cadastro.css";
-
 import BasicInfo from "../Formulário/BasicData/Data";
 import ComplementaryInfo from "../Formulário/DadosComplementares/ComplementaryInfo";
 import WorkingHours from "../Formulário/WorkingHours/WorkingHours";
 import Documents from "../Formulário/Documents/Documents";
 import Address from "../Formulário/Adress/Adress";
 import Contact from "../Formulário/Contact/Contact";
+import { useApi } from "../hooks/userApi";
 
 const Users = () => {
+  /*--------------------------------*/
   const [toggleState, setToggleState] = useState(0);
-
+  /*--------------------------------*/
   const toggleTab = (index) => {
     setToggleState(index);
   };
-
-  const [formInfo, setFormInfo] = useState({});
-  const handleFormInfoChange = (info) => {
-    setFormInfo(info);
-  };
-
-  const [workingInfo, setWorkingInfo] = useState({});
-  const handleWorkingInfoChange = (info) => {
-    setWorkingInfo(info);
-  };
-
+  /*--------------------------------*/
+  const { createUser } = useApi();
+  /*--------------------------------*/
   const [basicInfo, setBasicInfo] = useState({});
   const [complementaryInfo, setComplementaryInfo] = useState({});
+  const [workingInfo, setWorkingInfo] = useState({});
+  const [documentInfo, setDocumentInfo] = useState({});
+  const [endereco_residencial, setAdressInfo] = useState({});
+  const [contactInfo, setContactInfo] = useState({});
+
+  /*--------------------------------*/
 
   const handleBasicInfoChange = (info) => {
     setBasicInfo(info);
@@ -47,11 +46,49 @@ const Users = () => {
     setComplementaryInfo(info);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can handle the form submission with the basic and complementary info
-    console.log(basicInfo, complementaryInfo, workingInfo, formInfo);
+  const handleWorkingInfoChange = (info) => {
+    setWorkingInfo(info);
   };
+
+  const handleDocumentInfoChange = (info) => {
+    setDocumentInfo(info);
+  };
+
+  const handleAdressInfoChange = (info) => {
+    setAdressInfo(info);
+  };
+
+  const handleContactInfoChange = (info) => {
+    setContactInfo(info);
+  };
+  /*--------------------------------*/
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userData = {
+      basicInfo,
+      complementaryInfo,
+      workingInfo,
+      documentInfo,
+      endereco_residencial,
+      contactInfo,
+    };
+
+    try {
+      const response = await createUser(userData);
+      console.log("Usuário criado com sucesso:", response);
+
+      setBasicInfo({});
+      setComplementaryInfo({});
+      setWorkingInfo({});
+      setDocumentInfo({});
+      setAdressInfo({});
+      setContactInfo({});
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error);
+    }
+  };
+
   return (
     <section className="container__home">
       <aside className="sidebar">
@@ -123,9 +160,9 @@ const Users = () => {
             <BasicInfo onChange={handleBasicInfoChange} />
             <ComplementaryInfo onChange={handleComplementaryInfoChange} />
             <WorkingHours onChange={handleWorkingInfoChange} />
-            <Documents onChange={handleFormInfoChange} />
-            <Address onChange={handleFormInfoChange} />
-            <Contact onChange={handleFormInfoChange} />
+            <Documents onChange={handleDocumentInfoChange} />
+            <Address onChange={handleAdressInfoChange} />
+            <Contact onChange={handleContactInfoChange} />
             <button
               onClick={() => toggleTab(0)}
               className="btn__form cancel"
@@ -133,7 +170,18 @@ const Users = () => {
             >
               Cancelar
             </button>
-            <button className="btn__form save" type="submit">
+            <button
+              onClick={() =>
+                createUser({
+                  nome: basicInfo.nome,
+                  sobrenome: basicInfo.sobrenome,
+                  email: contactInfo.email,
+                  telefone: contactInfo.telefone,
+                })
+              }
+              className="btn__form save"
+              type="submit"
+            >
               Salvar{" "}
             </button>
           </form>

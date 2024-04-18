@@ -4,24 +4,35 @@ import "./Data.css";
 import { useState } from "react";
 
 function BasicInfo({ onChange }) {
-  const [photoURL, setPhotoURL] = useState(""); // Estado para armazenar a URL da foto
-
+  const [photoURL, setPhotoURL] = useState("");
+  const [formData, setFormData] = useState({
+    nome: "",
+    nome_pai: "",
+    nome_mae: "",
+    cpf_cnpj: "",
+    estado_civil: "",
+    data_nascimento: "",
+    apelido: "",
+    // Adicione outros campos do formulário aqui conforme necessário
+  });
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setPhotoURL(event.target.result); // Define a URL da foto
+        setPhotoURL(event.target.result);
       };
       reader.readAsDataURL(file);
     }
   };
-
   const handleChange = (e) => {
-    onChange({
-      ...onChange,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    // Chame a função onChange passando os dados atualizados
+    onChange(formData);
   };
 
   return (
@@ -57,60 +68,61 @@ function BasicInfo({ onChange }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="nomePai">Nome do Pai:</label>
+        <label htmlFor="nome_pai">Nome do Pai:</label>
         <input
           type="text"
-          id="nomePai"
-          name="nomePai"
+          id="nome_pai"
+          name="nome_pai"
           onChange={handleChange}
           className="input-field"
         />
       </div>
       <div className="form-group">
-        <label htmlFor="nomeMae">Nome da Mãe:</label>
+        <label htmlFor="nome_mae">Nome da Mãe:</label>
         <input
           type="text"
-          id="nomeMae"
-          name="nomeMae"
+          id="nome_mae"
+          name="nome_mae"
           onChange={handleChange}
           className="input-field"
         />
       </div>
       <div className="form-group">
-        <label htmlFor="cpf">CPF</label>
+        <label htmlFor="cpf_cnpj">CPF/CNPJ</label>
         <input
           type="text"
-          id="cpf"
-          name="cpf"
+          id="cpf_cnpj"
+          name="cpf_cnpj"
           onChange={handleChange}
           className="input-field"
         />
       </div>
       {/* REQUISITAR API AQUI NO ESTADO CIVIL */}
       <div className="form-group">
-        <label htmlFor="estadoCivil">Estado Civil:</label>
+        <label htmlFor="estado_civil">Estado Civil:</label>
         <select
-          id="estadoCivil"
-          name="estadoCivil"
+          id="estado_civil"
+          name="estado_civil"
           onChange={handleChange}
-          className="input-field options"
+          className="select-field"
+          defaultValue=""
         >
           <option value="">Selecione o Estado Civil</option>
           <option value="solteiro">Solteiro</option>
           <option value="casado">Casado</option>
           <option value="divorciado">Divorciado</option>
           <option value="viuvo">Viúvo</option>
+          <option value="viuvo">Separado</option>
         </select>
       </div>{" "}
-      {/* REQUISITAR API AQUI NO ESTADO CIVIL */}
       <div className="form-group">
-        <label htmlFor="dataNascimento">
+        <label htmlFor="data_nascimento">
           Data de Nascimento <i className="bx bxs-calendar-alt"></i>
         </label>
         <input
-          type="text"
-          id="dataNascimento"
-          name="dataNascimento"
+          type="date"
+          id="data_nascimento"
+          name="data_nascimento"
           onChange={handleChange}
           className="input-field"
         />

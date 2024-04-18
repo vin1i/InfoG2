@@ -4,6 +4,8 @@ import Users from "../Users/Users";
 import Login from "../Login/Login";
 import { RequireAuth } from "../context/Auth/RequireAuth";
 
+import ListUsers from "../UsuáriosCadastrados/ListUsers/ListUsers";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -20,6 +22,7 @@ const AppRoutes = () => {
         }
       ></Route>
       <Route path="/Usuarios" element={<Users />}></Route>
+      <Route path="/UsersRe" element={<ListUsers />}></Route>
     </Routes>
   );
 };
