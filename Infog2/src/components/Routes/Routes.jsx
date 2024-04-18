@@ -14,15 +14,14 @@ const AppRoutes = () => {
       <Route path="/Login" element={<Login />}></Route>
       <Route path="/Usuarios" element={<Users />}></Route>{" "}
       <Route
-        path="/Home"
+        path="/Inicio"
         element={
           <RequireAuth>
             <Home />
           </RequireAuth>
         }
       ></Route>
-      <Route path="/Usuarios" element={<Users />}></Route>
-      <Route path="/UsersRe" element={<ListUsers />}></Route>
+      <Route path="/lista-usuarios" element={<ListUsers />}></Route>
     </Routes>
   );
 };

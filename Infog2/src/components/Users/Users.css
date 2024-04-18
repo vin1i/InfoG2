@@ -1,6 +1,6 @@
 .content__add {
   position: absolute;
-  top: calc(15% - 80px); /* Posiciona o conteúdo abaixo do cabeçalho */
+  top: calc(15% - 100px); /* Posiciona o conteúdo abaixo do cabeçalho */
   left: 0;
   right: 0;
   display: flex;

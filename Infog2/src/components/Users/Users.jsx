@@ -10,7 +10,7 @@ import Logo from "../../assets/imagens/Ellipse 18(1).png";
 import ghost from "../../assets/iconesHome/Group 783.png";
 import "./Users.css";
 import "../Home/home.css";
-import "../Formulário/Cadastro/Cadastro.css";
+import "./Form.css";
 import BasicInfo from "../Formulário/BasicData/Data";
 import ComplementaryInfo from "../Formulário/DadosComplementares/ComplementaryInfo";
 import WorkingHours from "../Formulário/WorkingHours/WorkingHours";
@@ -18,10 +18,12 @@ import Documents from "../Formulário/Documents/Documents";
 import Address from "../Formulário/Adress/Adress";
 import Contact from "../Formulário/Contact/Contact";
 import { useApi } from "../hooks/userApi";
+import { useNavigate } from "react-router-dom";
 
 const Users = () => {
   /*--------------------------------*/
   const [toggleState, setToggleState] = useState(0);
+  const navigate = useNavigate();
   /*--------------------------------*/
   const toggleTab = (index) => {
     setToggleState(index);
@@ -73,17 +75,48 @@ const Users = () => {
       endereco_residencial,
       contactInfo,
     };
-
+    const userJson = {
+      endereco_residencial: userData.endereco_residencial,
+      estado_civil: "1",
+      naturalidade: userData.complementaryInfo.naturalidade,
+      nome_pai: userData.basicInfo.nome_pai,
+      nome_mae: userData.basicInfo.nome_mae,
+      numero_identidade: userData.documentInfo.numero_identidade,
+      orgao_emissor_identidade: userData.documentInfo.orgao_emissor_identidade,
+      uf_identidade: "22",
+      numero_titulo_eleitor: userData.documentInfo.numero_titulo_eleitor,
+      secao_titulo_eleitor: userData.documentInfo.secao_titulo_eleitor,
+      zona_titulo_eleitor: userData.documentInfo.zona_titulo_eleitor,
+      numero_carteira_trabalho: userData.documentInfo.numero_carteira_trabalho,
+      serie_carteira_trabalho: userData.documentInfo.serie_carteira_trabalho,
+      data_emissao_carteira_trabalho: null,
+      uf_carteira_trabalho: "22",
+      data_admissao: null,
+      data_demissao: null,
+      perfil: userData.complementaryInfo.perfil,
+      funcao: userData.complementaryInfo.funcao,
+      pix_key: userData.complementaryInfo.pix_key,
+      nome: userData.basicInfo.nome,
+      apelido: userData.basicInfo.apelido,
+      cpf_cnpj: userData.basicInfo.cpf_cnpj,
+      telefone: userData.contactInfo.telefone,
+      email: userData.contactInfo.email,
+      data_nascimento: "01/03/1975",
+      horario_colaborador: {
+        dia_util_inicio_manha: "08:00",
+        dia_util_fim_manha: "12:00",
+        dia_util_inicio_tarde: "14:00",
+        dia_util_fim_tarde: "18:00",
+        sabado_inicio: "08:00",
+        sabado_fim: "12:00",
+      },
+    };
     try {
-      const response = await createUser(userData);
+      const response = await createUser(userJson);
       console.log("Usuário criado com sucesso:", response);
-
-      setBasicInfo({});
-      setComplementaryInfo({});
-      setWorkingInfo({});
-      setDocumentInfo({});
-      setAdressInfo({});
-      setContactInfo({});
+      if (response.status == 200 || response.status == 201) {
+        navigate("/lista-usuarios");
+      }
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
     }
@@ -126,8 +159,6 @@ const Users = () => {
             <li className="image__logo">
               <img src={Logo} alt="" />
             </li>
-
-            {/* Adicione mais itens de menu aqui */}
           </ul>
         </nav>
       </aside>
@@ -170,18 +201,7 @@ const Users = () => {
             >
               Cancelar
             </button>
-            <button
-              onClick={() =>
-                createUser({
-                  nome: basicInfo.nome,
-                  sobrenome: basicInfo.sobrenome,
-                  email: contactInfo.email,
-                  telefone: contactInfo.telefone,
-                })
-              }
-              className="btn__form save"
-              type="submit"
-            >
+            <button className="btn__form save" type="submit">
               Salvar{" "}
             </button>
           </form>

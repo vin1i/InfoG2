@@ -19,7 +19,7 @@ function Login() {
         console.log("Response from API:", response);
 
         if (response) {
-          navigate("/home");
+          navigate("/inicio");
         } else {
           alert("Credenciais inválidas. Por favor, tente novamente.");
         }

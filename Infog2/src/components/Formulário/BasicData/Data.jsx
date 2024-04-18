@@ -64,7 +64,6 @@ function BasicInfo({ onChange }) {
           name="nome"
           onChange={handleChange}
           className="input-field"
-          required
         />
       </div>
       <div className="form-group">
@@ -95,6 +94,7 @@ function BasicInfo({ onChange }) {
           name="cpf_cnpj"
           onChange={handleChange}
           className="input-field"
+          required
         />
       </div>
       {/* REQUISITAR API AQUI NO ESTADO CIVIL */}

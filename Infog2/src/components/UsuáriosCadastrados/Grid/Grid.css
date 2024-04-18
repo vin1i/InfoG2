@@ -24,11 +24,6 @@
   display: none;
 }
 
-@media (max-width: 500px) {
-  .OnlyWeb {
-    display: table-cell;
-  }
-}
 /*----------------------------------------------*/
 /* .Table {
   width: 100%;
@@ -50,3 +45,29 @@
   font-weight: bold;
 }
 /*----------------------------------------------*/
+
+@media (max-width: 500px) {
+  .OnlyWeb {
+    display: none;
+  }
+}
+
+@media (max-width: 1535px) {
+  .Table {
+    width: 80%;
+  }
+}
+@media (max-width: 875px) {
+  .Table {
+    width: 10%;
+  }
+}
+@media (max-width: 500px) {
+  .Table {
+    font-size: 0.8rem;
+    width: 100px !important;
+  }
+  .Td {
+    font-size: 0.6rem;
+  }
+}

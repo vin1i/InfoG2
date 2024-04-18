@@ -12,6 +12,11 @@ const api = axios.create({
 //   }
 //   return config;
 // });
+const config = {
+  headers: {
+    Authorization: `Token ${localStorage.getItem("authToken")}`,
+  },
+};
 
 export const useApi = () => ({
   signin: async (email, password) => {
@@ -30,18 +35,59 @@ export const useApi = () => ({
         Authorization: `Token ${localStorage.getItem("authToken")}`,
       };
 
-      // let config = {
-      //   headers: {
-      //     Authorization: `Token ${localStorage.getItem("authToken")}`,
-      //   },
-      // };
-
-      console.log(headers);
-      const body = {};
+      console.log(userData);
       const response = await api.post("/a/colaborador/", userData, { headers });
       return response.data;
     } catch (error) {
       throw new Error("Erro ao criar usuário");
     }
   },
+
+  getUsers: async () => {
+    try {
+      let config = {
+        headers: {
+          Authorization: `Token ${localStorage.getItem("authToken")}`,
+        },
+      };
+      const res = await api.get("/a/colaborador/?text=", config);
+      return res.data.results;
+    } catch (error) {
+      throw new Error("Erro ao buscar usuários.");
+    }
+  },
+
+  getSearchUsers: async (searchTerm) => {
+    try {
+      const response = await api.get(
+        `/a/colaborador/?text=${searchTerm}`,
+        config
+      );
+
+      return response.data.results;
+    } catch (error) {
+      console.error("Erro ao buscar usuários:", error.message);
+      throw new Error("Erro ao buscar usuários");
+    }
+  },
+
+  // getCidades: async () => {
+  //   try {
+  //     const response = await api.get("/a/cidade/", config);
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error("Erro ao obter lista de cidades:", error.message);
+  //     throw new Error("Erro ao obter lista de cidades");
+  //   }
+  // },
+
+  // getBairros: async () => {
+  //   try {
+  //     const response = await api.get("/a/bairro/?cidade_id=1");
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error("Erro ao obter lista de bairros:", error.message);
+  //     throw new Error("Erro ao obter lista de bairros");
+  //   }
+  // },
 });

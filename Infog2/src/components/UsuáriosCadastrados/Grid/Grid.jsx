@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
-import axios from "axios";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "./Grid.css";
 
-function Grid({ users }) {
+function Grid({ users, onDelete }) {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/users/${id}`);
+      onDelete(id);
       toast.success("Usuário deletado com sucesso!");
     } catch (error) {
       toast.error("Erro ao deletar usuário.");
@@ -19,28 +18,37 @@ function Grid({ users }) {
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Email</th>
+          <th>Status</th>
+          <th>CPF/CNPJ</th>
           <th className="OnlyWeb">Fone</th>
           <th>Endereço</th>
-          <th>Ações</th>
+          <th>Editar</th>
+          <th>Deletar</th>
         </tr>
       </thead>
       <tbody>
-        {users.map((item, i) => (
-          <tr key={i}>
+        {users.map((item) => (
+          <tr key={item.id}>
             <td className="Td" style={{ width: "30%" }}>
               {item.nome}
             </td>
+            <td
+              className={`Td ${item.status === "Ativo" ? "Ativo" : ""}`}
+              style={{ width: "6%" }}
+            >
+              {item.status}
+            </td>
             <td className="Td" style={{ width: "30%" }}>
-              {item.email}
+              {item.cpf_cnpj_formatado}
             </td>
-            <td className="Td OnlyWeb" style={{ width: "20%" }}>
-              {item.fone}
+
+            <td className="Td " style={{ width: "25%" }}>
+              {item.endereco_residencial}
             </td>
-            <td className="Td Actions" style={{ width: "10%" }}>
+            <td className="Td Actions" style={{ width: "20%" }}>
               <FaEdit />
             </td>
-            <td className="Td Actions" style={{ width: "10%" }}>
+            <td className="Td Actions" style={{ width: "20%" }}>
               <FaTrash onClick={() => handleDelete(item.id)} />
             </td>
           </tr>
@@ -50,13 +58,7 @@ function Grid({ users }) {
   );
 }
 Grid.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      nome: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      fone: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  users: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 export default Grid;

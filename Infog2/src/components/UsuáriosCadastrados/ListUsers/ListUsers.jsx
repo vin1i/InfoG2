@@ -7,7 +7,7 @@ import Vector5 from "../../../assets/icones/system-uicons_clipboard-notes.png";
 import Vector6 from "../../../assets/icones/ic_outline-settings.png";
 import Logo from "../../../assets/imagens/Ellipse 18(1).png";
 
-import RegisterUsers from "../RegisterUsers";
+import RegisterUsers from "./RegisterUsers";
 
 const ListUsers = () => {
   return (

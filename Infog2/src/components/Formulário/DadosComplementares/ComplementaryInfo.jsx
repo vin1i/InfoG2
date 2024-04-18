@@ -52,7 +52,7 @@ function ComplementaryInfo({ onChange }) {
           <input
             type="text"
             id="pix"
-            name="chavePix"
+            name="funcao"
             className="info-input"
             onChange={handleChange}
           />
