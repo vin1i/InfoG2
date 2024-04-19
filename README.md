@@ -40,4 +40,4 @@ Apenas o usuário `usuario_teste_mario@infog2.com` com a senha `admin` possui pe
 
 ## Contribuindo
 
-Este é um projeto de código aberto derivado do teste fornecido da Infog2.
+Este é um projeto de código aberto derivado do teste fornecido pela Infog2.
