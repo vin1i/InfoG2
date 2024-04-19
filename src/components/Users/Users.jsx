@@ -128,13 +128,13 @@ const Users = () => {
         <nav>
           <ul>
             <li>
-              <a href="home">
+              <a href="inicio">
                 <img className="img__1" src={toggle} alt="" />
               </a>
             </li>
 
             <li>
-              <a href="home">
+              <a href="inicio">
                 {" "}
                 <img className="img__2" src={Vector} alt="" />
               </a>
