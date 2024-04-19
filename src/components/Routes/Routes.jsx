@@ -11,10 +11,10 @@ const AppRoutes = () => {
     <Routes>
       {" "}
       <Route path="/" element={<Login />}></Route>
-      <Route path="/Login" element={<Login />}></Route>
-      <Route path="/Usuarios" element={<Users />}></Route>{" "}
+      <Route path="/login" element={<Login />}></Route>
+      <Route path="/usuarios" element={<Users />}></Route>{" "}
       <Route
-        path="/Inicio"
+        path="/inicio"
         element={
           <RequireAuth>
             <Home />

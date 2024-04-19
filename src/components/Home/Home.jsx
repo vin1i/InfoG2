@@ -21,7 +21,7 @@ const Home = () => {
             </li>
 
             <li>
-              <a href="home">
+              <a href="inicio">
                 {" "}
                 <img className="img__2" src={Vector} alt="" />
               </a>
