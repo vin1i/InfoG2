@@ -2,13 +2,17 @@ import "./Styled.css";
 import { useRef } from "react";
 import PropTypes from "prop-types";
 
-function Search({ onSearch }) {
+function Search({ onSearch, onAddUser }) {
   const ref = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const searchTerm = ref.current.value.trim();
     onSearch(searchTerm);
+  };
+
+  const handleAddUser = () => {
+    onAddUser();
   };
 
   return (
@@ -24,7 +28,7 @@ function Search({ onSearch }) {
         />
       </div>
 
-      <button type="submit" className="Button">
+      <button type="submit" className="Button" onClick={handleAddUser}>
         +
       </button>
     </form>
@@ -32,6 +36,7 @@ function Search({ onSearch }) {
 }
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  onAddUser: PropTypes.func.isRequired,
 };
 
 export default Search;

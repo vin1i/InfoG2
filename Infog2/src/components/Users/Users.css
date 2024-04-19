@@ -1,12 +1,13 @@
 .content__add {
   position: absolute;
-  top: calc(15% - 100px); /* Posiciona o conteúdo abaixo do cabeçalho */
+  top: calc(15% - 80px); /* Posiciona o conteúdo abaixo do cabeçalho */
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+  overflow: hidden;
   z-index: 999; /* Certifique-se de que a camada de conteúdo seja superior à camada da imagem */
 }
 

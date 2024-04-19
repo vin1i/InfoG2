@@ -35,8 +35,8 @@ export const useApi = () => ({
         Authorization: `Token ${localStorage.getItem("authToken")}`,
       };
 
-      console.log(userData);
       const response = await api.post("/a/colaborador/", userData, { headers });
+
       return response.data;
     } catch (error) {
       throw new Error("Erro ao criar usuário");

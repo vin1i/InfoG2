@@ -64,6 +64,7 @@ function BasicInfo({ onChange }) {
           name="nome"
           onChange={handleChange}
           className="input-field"
+          required
         />
       </div>
       <div className="form-group">

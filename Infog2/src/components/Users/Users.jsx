@@ -114,9 +114,9 @@ const Users = () => {
     try {
       const response = await createUser(userJson);
       console.log("Usuário criado com sucesso:", response);
-      if (response.status == 200 || response.status == 201) {
-        navigate("/lista-usuarios");
-      }
+      console.log(response);
+
+      navigate("/lista-usuarios");
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
     }

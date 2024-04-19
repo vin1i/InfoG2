@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    container_name: infog2docker
+    command: npm run dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/usr/app
