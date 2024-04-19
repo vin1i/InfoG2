@@ -8,7 +8,7 @@ Este projeto é um sistema de gerenciamento de usuários desenvolvido em React-V
 - Clone este repositório para o seu ambiente local.
 - Abra o terminal na pasta raiz do projeto e execute o comando `npm install` para instalar as dependências.
 - Após a instalação das dependências, execute o comando `npm start` ou `npm run dev` para iniciar o servidor de desenvolvimento.
-- O deploy do projeto estará disponível em [[https://infog2.onrender.com/](https://infog2.onrender.com/)].
+- O deploy do projeto estará disponível em [https://infog2.onrender.com/](https://infog2.onrender.com/).
 - O projeto estará disponível em [http://localhost:5173](http://localhost:5173) no seu navegador.
 
 ## Rotas
